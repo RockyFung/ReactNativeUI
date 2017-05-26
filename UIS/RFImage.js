@@ -9,6 +9,7 @@ import {
     View,
     Image
 } from 'react-native';
+
 var imageAddress= 'http://img2.imgtn.bdimg.com/it/u=1616092571,2813843383&fm=23&gp=0.jpg';
 class RFImage extends React.Component{
     static navigationOptions = ({navigation}) => ({

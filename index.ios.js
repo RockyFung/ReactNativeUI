@@ -24,6 +24,11 @@ import RFTouchable from './UIS/RFTouchable'
 import RFScrollView from './UIS/RFScrollView'
 import RFListView from './UIS/RFListView'
 import RFItemList from './UIS/RFItemList'
+import RFRefreshControl from './UIS/RFRefreshControl'
+import RFWebView from './UIS/RFWebView'
+import RFModal from './UIS/RFModal'
+import RFAlert from './UIS/RFAlert'
+import RFAnimation from './UIS/RFAnimation'
 
 class HomePage extends  React.Component{
   static navigationOptions = {
@@ -41,7 +46,7 @@ class HomePage extends  React.Component{
       });
       this.state = {
           dataSource:ds,
-          data:['Image','Text','TextInput','SwitchAndPicker','Touchable','ScrollView','ListView']
+          data:['Image','Text','TextInput','SwitchAndPicker','Touchable','ScrollView','ListView','RefreshControl','WebView','Modal','Alert','Animation']
       };
     }
 
@@ -84,7 +89,12 @@ const ReactNativeUI = StackNavigator({
     RFTouchable:{screen:RFTouchable},
     RFScrollView:{screen:RFScrollView},
     RFListView:{screen:RFListView},
-    RFItemList:{screen:RFItemList}
+    RFItemList:{screen:RFItemList},
+    RFRefreshControl:{screen:RFRefreshControl},
+    RFWebView:{screen:RFWebView},
+    RFModal:{screen:RFModal},
+    RFAlert:{screen:RFAlert},
+    RFAnimation:{screen:RFAnimation},
 });
 
 
