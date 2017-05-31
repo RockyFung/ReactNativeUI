@@ -25,7 +25,7 @@ class RFImage extends React.Component{
                 </Image>
 
                 <Text style={{fontSize:18,marginTop:20}}>网络图片</Text>
-                <Image source={{uri:imageAddress}} style={{width:200,height:150 ,borderWidth:2,borderColor:'red'}}>
+                <Image  style={{width:200,height:150 ,borderWidth:2,borderColor:'red'}} source={{uri:imageAddress}}>
 
                 </Image>
 
