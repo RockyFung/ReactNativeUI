@@ -8,7 +8,8 @@ import {
     Text,
     View,
     Button,
-    Image
+    Image,
+    ListView
 } from 'react-native';
 
 var MOVIES_DATA =[{title:'Title',year:'2017',posters:{thumbnail:'http://i.imgur.com/UePbdph.jpg'}},];
@@ -24,12 +25,18 @@ class RFSimpleMovies extends React.Component{
       constructor(props) {
         super(props);
         // 初始状态
+          var ds = new ListView.DataSource({
+              rowHasChanged:(r1,r2)=>r1!==r2,
+          })
         this.state = {
             movies:null,
+            dataSource:ds,
+            loaded:false,
         };
       }
 
     // 只会在组件完成加载的时候调用一次
+    // 一般加载数据都在这个方法里
     componentDidMount() {
         this.fetchData(REQUEST_URL)
     }
@@ -41,7 +48,10 @@ class RFSimpleMovies extends React.Component{
         .then((response)=>response.json())
         .then((responseData)=>{
             console.log('result:' + responseData.movies);
-            this.setState({movies:responseData.movies})
+            this.setState({
+                movies:responseData.movies,
+                loaded:true,
+            })
         })
         .done()
     }
@@ -69,11 +79,19 @@ class RFSimpleMovies extends React.Component{
     }
 
     render(){
-        if(!this.state.movies){
+        if(!this.state.loaded){
             return this.renderLoadingView();
         }
-        var movie = this.state.movies[0];
-        return this.renderMovie(movie);
+        //var movie = this.state.movies[0];
+        return(
+            <ListView
+                style={styles.listView}
+                dataSource={this.state.dataSource.cloneWithRows(this.state.movies)}
+                renderRow={(rowData,sectionId,rowId)=>this.renderMovie(this.state.movies[rowId])}
+            >
+
+            </ListView>
+        ) //this.renderMovie(movie);
     }
 }
 
@@ -89,6 +107,7 @@ const styles = StyleSheet.create({
         width:100,
         height:120,
         marginLeft:10,
+        marginBottom:10,
     },
     right_style:{
       flex:1, // 使用这个样式之后，该控件可以占据除Image占据的空间之外的所有位置
@@ -102,6 +121,10 @@ const styles = StyleSheet.create({
     },
     year: {
         textAlign: 'center',
+    },
+    listView: {
+        paddingTop: 20,
+        backgroundColor: '#F5FCFF',
     },
 })
 
