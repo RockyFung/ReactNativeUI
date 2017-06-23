@@ -51,10 +51,25 @@ RCT_EXPORT_METHOD(addEventCallBack:(RCTResponseSenderBlock)callback){
   callback(@[[NSNull null],events]);
 }
 
+// Promises回调函数
+RCT_REMAP_METHOD(findEventsPromise,
+                 resolver:(RCTPromiseResolveBlock)resolve
+                 rejecter:(RCTPromiseRejectBlock)reject)
+{
+  NSArray *events =@[@"张三",@"李四",@"王五",@"赵六"];
+  if (events) {
+    resolve(events);
+  } else {
+    NSError *error=[NSError errorWithDomain:@"我是Promise回调错误信息..." code:101 userInfo:nil];
+    reject(@"no_events", @"There were no events", error);
+  }
 
+}
 
-
-
+//进行设置封装常量给JavaScript进行调用
+-(NSDictionary *)constantsToExport{
+  return @{@"firstDayOfTheWeek":@"Monday"};
+}
 
 
 

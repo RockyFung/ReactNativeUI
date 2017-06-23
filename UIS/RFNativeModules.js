@@ -57,6 +57,12 @@ class RFNativeModules extends React.Component{
                 Alert.alert('回调参数','姓名:'+events[0]+' ' +'性别:'+ events[1])
                 }
                 })}/>
+
+                <CustomButton text="调用Promise-callback的方法" onPress={()=>CalendarManager.addEventCallBack((error,events)=>{
+                if (!error){
+                Alert.alert('回调参数','姓名:'+events[0]+' ' +'性别:'+ events[1])
+                }
+                })}/>
             </View>
         )
     }

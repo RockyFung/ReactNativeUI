@@ -28,9 +28,10 @@ import RFRefreshControl from './UIS/RFRefreshControl'
 import RFWebView from './UIS/RFWebView'
 import RFModal from './UIS/RFModal'
 import RFAlert from './UIS/RFAlert'
-import RFAnimation from './UIS/RFAnimation'
+import RFLayoutAnimation from './UIS/RFLayoutAnimation'
 import RFSimpleMovies from './PROJECT/RFSimpleMovies'
 import RFNativeModules from './UIS/RFNativeModules'
+import RFAnimation from './UIS/RFAnimation'
 
 class HomePage extends  React.Component{
   static navigationOptions = {
@@ -48,7 +49,7 @@ class HomePage extends  React.Component{
       });
       this.state = {
           dataSource:ds,
-          data:['Image','Text','TextInput','SwitchAndPicker','Touchable','ScrollView','ListView','RefreshControl','WebView','Modal','Alert','Animation','SimpleMovies','NativeModules']
+          data:['Image','Text','TextInput','SwitchAndPicker','Touchable','ScrollView','ListView','RefreshControl','WebView','Modal','Alert','LayoutAnimation','SimpleMovies','NativeModules','Animation']
       };
     }
 
@@ -96,9 +97,10 @@ const ReactNativeUI = StackNavigator({
     RFWebView:{screen:RFWebView},
     RFModal:{screen:RFModal},
     RFAlert:{screen:RFAlert},
-    RFAnimation:{screen:RFAnimation},
+    RFLayoutAnimation:{screen:RFLayoutAnimation},
     RFSimpleMovies:{screen:RFSimpleMovies},
     RFNativeModules:{screen:RFNativeModules},
+    RFAnimation:{screen:RFAnimation},
 });
 
 
